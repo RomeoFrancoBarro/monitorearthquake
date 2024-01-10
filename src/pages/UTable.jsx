@@ -134,7 +134,7 @@ export class ATable extends React.Component{
                 </thead>
                 <tbody>
                     {this.state.tableData.map((row, index)=>{
-                        // Skip rendering rows for "Admin" and "Users"
+                        
                         if (row.key === "Admin" || row.key === "Users") {
                             return null;
                         }
