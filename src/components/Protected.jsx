@@ -1,12 +1,16 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom';
+import React from 'react';
+import { Route, useNavigate } from 'react-router-dom';
 
-const Protected = () => {
-  const token = localStorage.getItem('token');
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const isAuthenticated = !!localStorage.getItem('user'); // Check if user exists in localStorage
+  const navigate = useNavigate();
 
-  return (
-    token ? <Outlet /> : <Navigate to="/login" />
-  )
-}
+  if (!isAuthenticated) {
+    navigate('/login'); // Redirect to login page if not authenticated
+    return null; // Return null to prevent rendering the component
+  }
 
-export default Protected
+  return <Route {...rest} element={<Component />} />;
+};
+
+export default PrivateRoute;

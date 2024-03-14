@@ -5,7 +5,7 @@ import { auth } from '../firebase';
 import StartFirebase from '../firebase';
 import { ref, set } from 'firebase/database';
 import customLogo from '../assets/logo.png';
-import customLogo2 from '../assets/logo2.png';  
+import customLogo2 from '../assets/logo.png';  
 
 
 const DataSignup = () => {
